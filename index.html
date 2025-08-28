@@ -109,8 +109,6 @@
       color: #666;
     }
   </style>
-  <!-- Font Awesome for Instagram Icon -->
-  <script src="https://kit.fontawesome.com/4b7e3d5e2d.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Logo -->
@@ -123,26 +121,38 @@
   <p>Stay tuned for an immersive experience as we launch FinalArcX. Get ready for creativity, innovation, and unforgettable visuals!</p>
 
   <!-- Email Subscription -->
-  <div class="subscribe">
-    <form class="subscribe" action="subscribe.php" method="POST">
-      <input type="email" name="email" placeholder="Enter your Email ID" required>
-      <button type="submit">NOTIFY ME</button>
-    </form>
+  <form class="subscribe" action="https://script.google.com/macros/s/AKfycbzb7vPOs6mGcEzcW1kz44KcM2vUjDMNr5sv6pRVmvujekJAtSiINCGfqsodf1VLYND6vQ/exec" method="POST">
+    <input type="email" name="email" placeholder="Enter your Email ID" required>
+    <button type="submit">NOTIFY ME</button>
+  </form>
 
+  <!-- Social Media -->
+  <div class="social">
+    <p style="color:#aaa; font-size:1rem; margin-bottom:10px;">Follow us on</p>
+    <a href="https://www.instagram.com/finalarcx?igsh=MWM1anN1dTkyOTk3Yw==" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
   </div>
-
- <!-- Social Media -->
-<div class="social">
-  <p style="color:#aaa; font-size:1rem; margin-bottom:10px;">Follow us on</p>
-  <a href="https://www.instagram.com/finalarcx?igsh=MWM1anN1dTkyOTk3Yw==" target="_blank">
-    <i class="fab fa-instagram"></i>
-  </a>
-</div>
 
   <!-- Footer -->
   <div class="footer">© 2025 FinalArcX. All Rights Reserved.</div>
+
+  <!-- Success/Failure Script -->
+  <script>
+    const form = document.querySelector(".subscribe");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form)
+      });
+      if (response.ok) {
+        alert("✅ Thank you! You will be notified.");
+        form.reset();
+      } else {
+        alert("❌ Something went wrong. Please try again.");
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-
