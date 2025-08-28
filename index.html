@@ -124,8 +124,11 @@
 
   <!-- Email Subscription -->
   <div class="subscribe">
-    <input type="email" placeholder="Enter your Email ID">
-    <button>NOTIFY ME</button>
+    <form class="subscribe" action="subscribe.php" method="POST">
+      <input type="email" name="email" placeholder="Enter your Email ID" required>
+      <button type="submit">NOTIFY ME</button>
+    </form>
+
   </div>
 
  <!-- Social Media -->
@@ -140,5 +143,6 @@
   <div class="footer">© 2025 FinalArcX. All Rights Reserved.</div>
 </body>
 </html>
+
 
 
