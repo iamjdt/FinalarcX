@@ -138,21 +138,39 @@
   <div class="footer">© 2025 FinalArcX. All Rights Reserved.</div>
 
   <!-- Success/Failure Script -->
-  <script>
-    const form = document.querySelector(".subscribe");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+ <!-- Message Area -->
+<div id="form-message" style="margin-top:10px; font-size:0.95rem;"></div>
+
+<script>
+  const form = document.querySelector(".subscribe");
+  const messageBox = document.getElementById("form-message");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    messageBox.textContent = "Submitting...";
+    messageBox.style.color = "#ffcc00"; // yellow while waiting
+
+    try {
       let response = await fetch(form.action, {
         method: "POST",
         body: new FormData(form)
       });
+
       if (response.ok) {
-        alert("✅ Thank you! You will be notified.");
+        messageBox.textContent = "✅ Thank you! You will be notified.";
+        messageBox.style.color = "limegreen";
         form.reset();
       } else {
-        alert("❌ Something went wrong. Please try again.");
+        messageBox.textContent = "❌ Something went wrong. Please try again.";
+        messageBox.style.color = "red";
       }
-    });
-  </script>
+    } catch (error) {
+      messageBox.textContent = "⚠️ Network error. Try again later.";
+      messageBox.style.color = "red";
+    }
+  });
+</script>
+
 </body>
 </html>
+
